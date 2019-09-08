@@ -2,13 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TargetGenerator : MonoBehaviour
+public class TargetGenerator : SingletonMonoBehaviour<TargetGenerator>
 {
     [SerializeField] GameObject[] TargetObjects;
     [SerializeField] GameObject TargetPositionObject;
     Transform[] Positions;
 
     GameObject newTarget;
+
+    [SerializeField] int maxLoopCount;
+    [SerializeField] float loopTime;
+    [SerializeField] float loopInterval;
+
+
+
+    int loopCount = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -28,10 +36,16 @@ public class TargetGenerator : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(0.5f);
+            loopCount++;
+            if (loopCount > maxLoopCount)
+            {
+                GameManager.Instance.ChangeGameStatus(GameStatus.End);
+            }
+
+            yield return new WaitForSeconds(loopInterval);
 
             GenerateTarget();
-            yield return new WaitForSeconds(2.0f);
+            yield return new WaitForSeconds(loopTime);
             DeleteTarget();
         }
 

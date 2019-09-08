@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shooter : MonoBehaviour
+public class Shooter : SingletonMonoBehaviour<Shooter>
 {
     public GameObject cannonballPrefab;
 
     // Update is called once per frame
-    void Update()
+    //void Update()
+    public void ShooterUpdate()
     {
         if (Input.GetMouseButtonDown(0))
         {

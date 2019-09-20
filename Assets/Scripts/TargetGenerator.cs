@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class TargetGenerator : SingletonMonoBehaviour<TargetGenerator>
 {
-    [SerializeField] GameObject[] TargetObjects;
+    [SerializeField] GameObject Targets;
+    [SerializeField] GameObject[] TargetPrefabs;
     [SerializeField] GameObject TargetPositionObject;
     Transform[] Positions;
 
@@ -15,22 +16,14 @@ public class TargetGenerator : SingletonMonoBehaviour<TargetGenerator>
     [SerializeField] float loopInterval;
 
 
-
     int loopCount = 0;
 
-    // Start is called before the first frame update
     void Start()
     {
         Positions = TargetPositionObject.GetComponentsInChildren<Transform>();
         StartCoroutine(TargetCoroutine());
     }
-
-    //// Update is called once per frame
-    //void Update()
-    //{
-        
-    //}
-
+    
 
     private IEnumerator TargetCoroutine()
     {
@@ -39,7 +32,7 @@ public class TargetGenerator : SingletonMonoBehaviour<TargetGenerator>
             loopCount++;
             if (loopCount > maxLoopCount)
             {
-                GameManager.Instance.ChangeGameStatus(GameStatus.End);
+                GameProcessManager.Instance.ChangeGameStatus(GameStatus.End);
             }
 
             yield return new WaitForSeconds(loopInterval);
@@ -55,8 +48,8 @@ public class TargetGenerator : SingletonMonoBehaviour<TargetGenerator>
     void GenerateTarget()
     {
         Transform newTargetPosition = Positions[Random.Range(1, Positions.Length)];
-        newTarget = Instantiate(TargetObjects[Random.Range(0, TargetObjects.Length)], newTargetPosition.position, newTargetPosition.rotation) as GameObject;
-        newTarget.transform.parent = this.transform;
+        newTarget = Instantiate(TargetPrefabs[Random.Range(0, TargetPrefabs.Length)], newTargetPosition.position, newTargetPosition.rotation) as GameObject;
+        newTarget.transform.parent = Targets.transform;
 
     }
 

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 974612225504024645}
   - component: {fileID: 974612225504024649}
   - component: {fileID: 3472099585994318550}
+  - component: {fileID: -3692293124051546545}
   m_Layer: 0
   m_Name: Cube1
   m_TagString: Untagged
@@ -87,7 +88,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 974612225504024644}
-  m_Material: {fileID: 13400000, guid: 1a13612f9c3794142bd6b4b93299e0dc, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -117,9 +118,22 @@ FixedJoint:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 974612225504024644}
   m_ConnectedBody: {fileID: 0}
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
+  m_BreakForce: 110
+  m_BreakTorque: 110
   m_EnableCollision: 0
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &-3692293124051546545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 974612225504024644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24264c7512331794eaddd75aeaf2292d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cubeScore: 1

@@ -6,8 +6,6 @@ public class Shooter : SingletonMonoBehaviour<Shooter>
 {
     public GameObject cannonballPrefab;
 
-    // Update is called once per frame
-    //void Update()
     public void ShooterUpdate()
     {
         if (Input.GetMouseButtonDown(0))

@@ -1,24 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : SingletonMonoBehaviour<UIManager>
 {
     [SerializeField] GameObject startMessage;
     [SerializeField] GameObject endMessage;
 
-    //void Start()
-    //{
-    //    startMessage.SetActive(true);
-    //    endMessage.SetActive(false);
-    //}
+    public Text GameScore;
 
 
     public void StartUIUpdate()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            GameManager.Instance.ChangeGameStatus(GameStatus.GamePlay);
+            GameProcessManager.Instance.ChangeGameStatus(GameStatus.GamePlay);
         }
     }
 
